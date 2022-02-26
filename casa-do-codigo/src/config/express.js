@@ -24,4 +24,12 @@ app.use(methodOverride(function (req, res) {
 const routes = require("../app/routes/routes.js")
 routes(app)
 
+app.use((request, response, next) => {
+  return response.status(404).marko(require("../app/views/base/errors/404.marko"))
+})
+
+app.use((erro, request, response, next) => {
+  return response.status(500).marko(require("../app/views/base/errors/500.marko"))
+})
+
 module.exports = app;

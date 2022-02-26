@@ -1,19 +1,9 @@
 const BookDataAccessObject = require("../infra/book-dao.js")
 const db = require("../../config/database.js")
-
+//
 module.exports = (app) => {
     app.get('/', (request, response) => {
-        response.send(`<!DOCTYPE html>
-        <html lang="pt-br">
-        <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <title>Casa do código</title>
-        </head>
-        <body>
-            <h1>Casa do código</h1>
-        </body>
-        </html>`)
+        response.marko(require("../views/base/home/home.marko"))
     })
 
     app.get('/livros', (_, response) => {
